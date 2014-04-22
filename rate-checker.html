@@ -123,9 +123,9 @@
 
     </div><!-- END .result -->
 
-    <div class="calculator col-4">
+    <div class="calculator wizard-container col-4">
 
-      <section class="credit-score wrapper">
+      <section class="credit-score wizard current wrapper">
 
         <div class="col-12">
 
@@ -139,7 +139,10 @@
 
       </section>
 
-      <section class="demographics wrapper">
+      <section class="demographics wizard visuallyhidden wrapper">
+
+        <h3>Where do you plan to buy a home?</h3>
+        <p>In most parts of the country, we only have data about houses, not other property types.</p>
 
         <div class="col-6">
           <label for="location">Location</label>
@@ -216,6 +219,9 @@
           Loan types are made up of 3 parts. <a href="#">Learn more</a>
         </div>
 
+        </section>
+
+        <section class="home-price wizard visuallyhidden">
         <div class="col-6">
           <label for="house-price">House Price</label>
           <input type="number" placeholder="400,000" name="house-price" class="recalc" id="house-price">
@@ -239,10 +245,15 @@
         <div class="col-6 help">
           This is the resulting math form the above two inputs.
         </div>
-
       </section>
 
+      <a href="#" class="btn" id="wizard-next">Next <i class="cf-icon cf-icon-right"></i></a> <br>
+      <a href="#" id="wizard-all">View all options</a>
+      <a href="#" class="visuallyhidden" id="wizard-back"><i class="cf-icon cf-icon-left"></i> Back to guided options</a>
+
     </div><!-- END .calculator -->
+
+
 
   </div><!-- END .wrapper -->
 

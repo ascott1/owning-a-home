@@ -12121,6 +12121,7 @@ var interest = require('./modules/total-interest-calc');
 var formatUSD = require('./modules/format-usd');
 var unFormatUSD = require('./modules/unformat-usd');
 var highcharts = require('highcharts');
+require('./modules/wizard.js');
 
 // This is a temporary function that generates fake data in
 // the same format that our API will eventually return it.
@@ -12145,7 +12146,6 @@ var mock = function() {
   return { data: data };
 };
 
-// This is a hot mess
 $(function() {
 
   'use strict';
@@ -12343,7 +12343,7 @@ $(function() {
   renderView(0);
 
 });
-},{"./modules/format-usd":10,"./modules/payment-calc":11,"./modules/total-interest-calc":12,"./modules/unformat-usd":13,"debounce":1,"highcharts":"55mbNU","jquery":"t1HCCC","jquery-ui/slider":4}],10:[function(require,module,exports){
+},{"./modules/format-usd":10,"./modules/payment-calc":11,"./modules/total-interest-calc":12,"./modules/unformat-usd":13,"./modules/wizard.js":14,"debounce":1,"highcharts":"55mbNU","jquery":"t1HCCC","jquery-ui/slider":4}],10:[function(require,module,exports){
 // opts = {decimalPlaces: `number`}
 var formatMoney = function(num, opts) {
   var opts = opts || {},
@@ -12390,6 +12390,43 @@ var unFormatUSD = function(str) {
 
 module.exports = unFormatUSD;
 },{}],14:[function(require,module,exports){
+  // rate-checker wizard walk through
+
+  var displayFullWizard = function(){
+    $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
+    $('#wizard-all, #wizard-next, .wizard-desciption').addClass('visuallyhidden');
+  };
+
+  var backWizard = function(){
+    $('.wizard').addClass('visuallyhidden');
+    $('#wizard-all, #wizard-next').removeClass('visuallyhidden');
+    $('.wizard:first').removeClass('visuallyhidden').addClass('current');
+  };
+
+  $('#wizard-next').click(function(e) {
+    e.preventDefault();
+    var current = $('.wizard.current'),
+        next = current.next('.wizard');
+    if (next.length) {
+      current.toggleClass('visuallyhidden').removeClass('current');
+      next.removeClass('visuallyhidden').addClass('current');
+    } else {
+      displayFullWizard();
+    }
+  });
+
+  // show all wizard elements
+  $('#wizard-all').click(function(e) {
+    e.preventDefault();
+    displayFullWizard();
+  });
+
+  $('#wizard-back').click(function(e) {
+    e.preventDefault();
+    $(this).addClass('visuallyhidden');
+    backWizard();
+  });
+},{}],15:[function(require,module,exports){
 /**
  * cf-expandables
  * https://github.com/cfpb/cf-expandables
@@ -12420,6 +12457,8 @@ module.exports = unFormatUSD;
   });
 
 }(jQuery));
+},{}],"highcharts":[function(require,module,exports){
+module.exports=require('55mbNU');
 },{}],"55mbNU":[function(require,module,exports){
 (function (global){
 (function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
@@ -12728,6 +12767,4 @@ format:Ia,pathAnim:ub,getOptions:function(){return L},hasBidiBug:Ob,isTouchDevic
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"highcharts":[function(require,module,exports){
-module.exports=require('55mbNU');
-},{}]},{},[9,14])
+},{}]},{},[9,15])

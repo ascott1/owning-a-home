@@ -6,6 +6,7 @@ var interest = require('./modules/total-interest-calc');
 var formatUSD = require('./modules/format-usd');
 var unFormatUSD = require('./modules/unformat-usd');
 var highcharts = require('highcharts');
+require('./modules/wizard.js');
 
 // This is a temporary function that generates fake data in
 // the same format that our API will eventually return it.
@@ -30,7 +31,6 @@ var mock = function() {
   return { data: data };
 };
 
-// This is a hot mess
 $(function() {
 
   'use strict';
