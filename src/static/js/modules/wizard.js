@@ -2,6 +2,7 @@
 
 var displayFullWizard = function(){
   $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
+  $('.wizard.current').removeClass('current');
   $('#wizard-all, #wizard-next, .wizard-description').addClass('visuallyhidden');
 };
 

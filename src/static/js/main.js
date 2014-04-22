@@ -1738,9 +1738,7 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 
 })( jQuery );
 
-},{"jquery":"t1HCCC"}],"jquery":[function(require,module,exports){
-module.exports=require('t1HCCC');
-},{}],"t1HCCC":[function(require,module,exports){
+},{"jquery":"t1HCCC"}],"t1HCCC":[function(require,module,exports){
 (function (global){
 (function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
@@ -12041,6 +12039,8 @@ return jQuery;
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],"jquery":[function(require,module,exports){
+module.exports=require('t1HCCC');
 },{}],8:[function(require,module,exports){
 'use strict';
 
@@ -12396,6 +12396,7 @@ module.exports = unFormatUSD;
 
 var displayFullWizard = function(){
   $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
+  $('.wizard.current').removeClass('current');
   $('#wizard-all, #wizard-next, .wizard-description').addClass('visuallyhidden');
 };
 
@@ -12459,8 +12460,6 @@ $('#wizard-back').click(function(e) {
   });
 
 }(jQuery));
-},{}],"highcharts":[function(require,module,exports){
-module.exports=require('55mbNU');
 },{}],"55mbNU":[function(require,module,exports){
 (function (global){
 (function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
@@ -12769,4 +12768,6 @@ format:Ia,pathAnim:ub,getOptions:function(){return L},hasBidiBug:Ob,isTouchDevic
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],"highcharts":[function(require,module,exports){
+module.exports=require('55mbNU');
 },{}]},{},[9,15])
