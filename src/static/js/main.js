@@ -1738,7 +1738,9 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 
 })( jQuery );
 
-},{"jquery":"t1HCCC"}],"t1HCCC":[function(require,module,exports){
+},{"jquery":"t1HCCC"}],"jquery":[function(require,module,exports){
+module.exports=require('t1HCCC');
+},{}],"t1HCCC":[function(require,module,exports){
 (function (global){
 (function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
@@ -12039,8 +12041,6 @@ return jQuery;
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"jquery":[function(require,module,exports){
-module.exports=require('t1HCCC');
 },{}],8:[function(require,module,exports){
 'use strict';
 
@@ -12394,40 +12394,40 @@ module.exports = unFormatUSD;
 },{}],14:[function(require,module,exports){
   // rate-checker wizard walk through
 
-  var displayFullWizard = function(){
-    $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
-    $('#wizard-all, #wizard-next, .wizard-desciption').addClass('visuallyhidden');
-  };
+var displayFullWizard = function(){
+  $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
+  $('#wizard-all, #wizard-next, .wizard-description').addClass('visuallyhidden');
+};
 
-  var backWizard = function(){
-    $('.wizard').addClass('visuallyhidden');
-    $('#wizard-all, #wizard-next').removeClass('visuallyhidden');
-    $('.wizard:first').removeClass('visuallyhidden').addClass('current');
-  };
+var backWizard = function(){
+  $('.wizard').addClass('visuallyhidden');
+  $('#wizard-all, #wizard-next, .wizard-description').removeClass('visuallyhidden');
+  $('.wizard:first').removeClass('visuallyhidden').addClass('current');
+};
 
-  $('#wizard-next').click(function(e) {
-    e.preventDefault();
-    var current = $('.wizard.current'),
-        next = current.next('.wizard');
-    if (next.length) {
-      current.toggleClass('visuallyhidden').removeClass('current');
-      next.removeClass('visuallyhidden').addClass('current');
-    } else {
-      displayFullWizard();
-    }
-  });
-
-  // show all wizard elements
-  $('#wizard-all').click(function(e) {
-    e.preventDefault();
+$('#wizard-next').click(function(e) {
+  e.preventDefault();
+  var current = $('.wizard.current'),
+      next = current.next('.wizard');
+  if (next.length) {
+    current.toggleClass('visuallyhidden').removeClass('current');
+    next.removeClass('visuallyhidden').addClass('current');
+  } else {
     displayFullWizard();
-  });
+  }
+});
 
-  $('#wizard-back').click(function(e) {
-    e.preventDefault();
-    $(this).addClass('visuallyhidden');
-    backWizard();
-  });
+// show all wizard elements
+$('#wizard-all').click(function(e) {
+  e.preventDefault();
+  displayFullWizard();
+});
+
+$('#wizard-back').click(function(e) {
+  e.preventDefault();
+  $(this).addClass('visuallyhidden');
+  backWizard();
+});
 },{}],15:[function(require,module,exports){
 /**
  * cf-expandables
