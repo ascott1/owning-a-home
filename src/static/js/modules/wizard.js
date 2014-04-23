@@ -1,14 +1,18 @@
-  // rate-checker wizard walk through
+// rate-checker wizard walk through
+
+var hideOnDisplay = $('#wizard-all, #wizard-next, .wizard-description'),
+    showOnDisplay = $('.wizard, .wizard.visuallyhidden, #wizard-back'),
+    wizard = $('.wizard');
 
 var displayFullWizard = function(){
-  $('.wizard.visuallyhidden, #wizard-back').removeClass('visuallyhidden');
+  showOnDisplay.removeClass('visuallyhidden');
   $('.wizard.current').removeClass('current');
-  $('#wizard-all, #wizard-next, .wizard-description').addClass('visuallyhidden');
+  hideOnDisplay.addClass('visuallyhidden');
 };
 
 var backWizard = function(){
-  $('.wizard').addClass('visuallyhidden');
-  $('#wizard-all, #wizard-next, .wizard-description').removeClass('visuallyhidden');
+  wizard.addClass('visuallyhidden');
+  hideOnDisplay.removeClass('visuallyhidden');
   $('.wizard:first').removeClass('visuallyhidden').addClass('current');
 };
 
@@ -30,6 +34,7 @@ $('#wizard-all').click(function(e) {
   displayFullWizard();
 });
 
+// start the wizard over
 $('#wizard-back').click(function(e) {
   e.preventDefault();
   $(this).addClass('visuallyhidden');
