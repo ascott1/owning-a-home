@@ -300,8 +300,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          port: 3000,
-          keepalive: true
+          port: 3000
         }
       },
     },
@@ -369,7 +368,7 @@ module.exports = function(grunt) {
   grunt.registerTask('vendor', ['clean:bowerDir', 'bower:install', 'concat:cf-less']);
   grunt.registerTask('compile', ['less', 'browserify', 'autoprefixer']);
   grunt.registerTask('dist', ['clean:dist', 'cssmin', 'copy:dist', 'usebanner']);
-  grunt.registerTask('test', ['mochaTest', 'mocha_phantomjs']);
+  grunt.registerTask('test', ['mochaTest', 'connect:server', 'mocha_phantomjs']);
   grunt.registerTask('default', ['compile', 'dist']);
   //grunt.registerTask('test', ['jshint', 'jasmine']);
 
