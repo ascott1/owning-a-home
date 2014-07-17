@@ -357,7 +357,10 @@ function getCounties() {
 
 }
 
-
+/**
+ * Check if the house price entered is 0
+ * @return {null}
+ */
 function checkIfZero($price, $percent, $down) {
   if ($price.val() === '0' || +$price.val() === 0) {
     $percent.val('0');
