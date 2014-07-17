@@ -384,7 +384,7 @@ function renderDownPayment() {
     return;
   }
 
-  delay(checkIfZero, 500, $price, $percent, $down);
+  delay(checkIfZero, 300, $price, $percent, $down);
 
   if ( $el.attr('id') === 'down-payment' || options['dp-constant'] === 'down-payment' ) {
     val = ( getSelection('down-payment') / getSelection('house-price') * 100 ) || '';
@@ -392,6 +392,7 @@ function renderDownPayment() {
   } else {
     val = getSelection('house-price') * ( getSelection('percent-down') / 100 );
     $down.val( val > 0 ? Math.round(val) : '' );
+    $percent.val(Math.round(+$down.val() / +$price.val() * 100) || '');
   }
 
 }
