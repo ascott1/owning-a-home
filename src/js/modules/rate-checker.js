@@ -362,7 +362,7 @@ function getCounties() {
  * @return {null}
  */
 function checkIfZero($price, $percent, $down) {
-  if ($price.val() === '0' || +$price.val() === 0) {
+  if (params['house-price'] === '0' || +params['house-price'] === 0) {
     $percent.val('0');
     $down.val('0');
   }
