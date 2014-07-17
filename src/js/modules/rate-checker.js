@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var debounce = require('debounce');
+var delay = require('lodash.delay');
 var formatUSD = require('./format-usd');
 var unFormatUSD = require('./unformat-usd');
 var interest = require('./total-interest-calc');
@@ -356,6 +357,14 @@ function getCounties() {
 
 }
 
+
+function checkIfZero($price, $percent, $down) {
+  if ($price.val() === '0' || +$price.val() === 0) {
+    $percent.val('0');
+    $down.val('0');
+  }
+}
+
 /**
  * Update either the down payment % or $ amount depending on the input they've changed.
  * @return {null}
@@ -371,6 +380,8 @@ function renderDownPayment() {
   if ( !$el.val() ) {
     return;
   }
+
+  delay(checkIfZero, 500, $price, $percent, $down);
 
   if ( $el.attr('id') === 'down-payment' || options['dp-constant'] === 'down-payment' ) {
     val = ( getSelection('down-payment') / getSelection('house-price') * 100 ) || '';
